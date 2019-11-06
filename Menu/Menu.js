@@ -54,7 +54,7 @@ function createMenu(array){
   //select menu-button class in DOM 
   const menuButton = document.querySelector('.menu-button');
 
-  //menu button event listener 
+   //menu button event listener 
   menuButton.addEventListener('click', ()=>{
     menuContainer.classList.toggle('menu--open');
   });

@@ -105,6 +105,20 @@
 .menu--open {
   display: block;
 }
+.header {
+  animation: pulse 1s infinite;
+}
+@keyframes pulse {
+  0% {
+    background-color: #001F3F;
+  }
+  50% {
+    background-color: #FF4136;
+  }
+  100% {
+    background-color: #001F3F;
+  }
+}
 html,
 body {
   margin: 0;

@@ -171,7 +171,8 @@ function createArticle(title, articleDate, p1, p2, p3){
 }
 
 const articleParent = document.querySelector('.articles');
+
 data.forEach(data => {
   let newArticle = createArticle(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph);
   articleParent.appendChild(newArticle);
-})
+});
