@@ -85,6 +85,25 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: '10 Reasons Dogs Are Better Than Cats',
+    date: 'Jul 27th, 2019',
+    firstParagraph: `You've probably been asked at some point in your life if you're a dog person or a cat person. Some people love both animals. But if you had to live with only one, which would you choose? 
+
+    There's been a timeless debate between dog people and cat people. Now it's time to face off just for fun. Let's explore some reasons why dogs may be better than cats. 
+    
+    Not to worry, cat lovers! There are also a lot of reasons why cats can be better than dogs. `,
+
+    secondParagraph: `It's probably fair to say that even cat lovers don't love litter boxes. No matter how well you keep up with them, there always seems to be a lingering odor. Plus, litter often tracks all over the house. It's practically impossible to find a good place to put the litter box in a small house. Scooping the stuff is stinky and dusty. 
+
+    Dogs don't need litter boxes. They can be house-trained and most can stick to a schedule. They can use the yard or do their business during walks around the neighborhood. You only have to pick up the poop, not the urine the way you have to do with litter boxes. And as for the poop, you can simply use poop bags on walks and a poop-scooper in the yard. Cleaning up poop may not be fun, but many think it's the lesser of two necessary evils.
+    
+    Best of all, the poop and pee happen outdoors, not inside your home!`,
+
+    thirdParagraph: `There's only so much play you can do with your cat. Many cats love to play with string toys and they'll bat their little cat ball toys around, but it's almost like they're humoring you. They can play on their own, not just with people.
+
+    Dogs absolutely love to play, and it's often interactive play that they want--especially with you. You can play fetch with a ball or a disc. You can enjoy an exciting game of tug-of-war. You can play chase in the yard. If your dog gets along well with other dogs, you can even set up a doggie "playdate" with another pup. Just make sure both dogs are healthy and will get along. `
   }
 ];
 
@@ -112,3 +131,48 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+function createArticle(title, articleDate, p1, p2, p3){
+  //define new elements
+  const article = document.createElement("div");
+  const h2Heading = document.createElement("h2");
+  const dateParagraph = document.createElement("p");
+  const firstParagraph = document.createElement("p");
+  const secondParagraph = document.createElement("p");
+  const thirdParagraph = document.createElement("p");
+  const btn = document.createElement("span");
+
+  //set children
+  article.appendChild(h2Heading);
+  article.appendChild(dateParagraph);
+  article.appendChild(firstParagraph);
+  article.appendChild(secondParagraph);
+  article.appendChild(thirdParagraph);
+  article.appendChild(btn);
+
+  //set content
+  h2Heading.textContent = title;
+  dateParagraph.textContent = articleDate;
+  firstParagraph.textContent = p1;
+  secondParagraph.textContent = p2;
+  thirdParagraph.textContent = p3;
+
+  //set class names
+  article.classList.add('article');
+  dateParagraph.classList.add('date');
+  btn.classList.add('expandButton');
+  h2Heading.classList.add('h2');
+
+  //button event listener 
+  article.addEventListener('click', () => {
+    article.classList.toggle('article-open');
+  });
+  return article;
+}
+
+const articleParent = document.querySelector('.articles');
+
+data.forEach(data => {
+  let newArticle = createArticle(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph);
+  articleParent.appendChild(newArticle);
+});
